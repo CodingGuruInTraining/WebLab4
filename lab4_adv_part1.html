@@ -93,7 +93,7 @@
 
 
     </div>
-    <p id="response"></p>
+    <center><div id="response"></div></center>
     <script>
         var questionPara = document.getElementById("questions");
         var answerPara = document.getElementById("response");
@@ -108,7 +108,7 @@
             mybutton.style.visibility = 'hidden';
             introPara.innerHTML = "Question #" + (questionNum + 1);
             questionPara.innerHTML = arrQuestions[questionNum][0];
-            answerPara.innerHTML = " ";
+            answerPara.innerHTML = "";
             doubleLooping(1);
         }
 //marker.setVisible(true);
