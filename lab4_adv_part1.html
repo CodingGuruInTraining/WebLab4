@@ -52,23 +52,27 @@
         var player_score = 0;
 
         function initMap() {
-            var minneapolis = {lat: 44.97, lng:-93.26};
+            var minneapolis = {lat: 44.97, lng: -93.26};
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 10,
+                zoom: 7,
                 center: minneapolis,
                 mapTypeId: 'satellite'
             });
 
-            for (var i = 0; i < arrMarkers.length; i++) {
-                var marker = new google.maps.Marker({
-                    position: {lat: arrMarkers[i][0], lng: arrMarkers[i][1]},
-                    map: map,
-                    title: arrMarkers[i][2]
-                });
+            for (var x = 0; x < arrMarkers.length; x++) {
+                for (var i = 0; i < arrMarkers[x].length; i++) {
+                    var marker = new google.maps.Marker({
+                        position: {lat: arrMarkers[x][i][0], lng: arrMarkers[x][i][1]},
+                        map: map,
+                        setVisible: false,
+                        customInfo: arrMarkers[x][i][2]
+//                    title: arrMarkers[i][2]
+                    });
 //                console.log(i + " is iteration num");
 //                console.log(arrMarkers[i][2]);
 
-                marker.addListener('click', checkAnswer);
+                    marker.addListener('click', checkAnswer);
+                }
             }
         }
 
