@@ -36,8 +36,8 @@
                         ],
 
                         [
-                            [42.335115, -83.051166, "Detroit"],
                             [25.765562, -80.197366, "Miami"],
+                            [42.335115, -83.051166, "Detroit"],
                             [39.740774, -104.977362, "Denver"]
                         ]
                     ]
@@ -80,10 +80,13 @@
 
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADpIV1QKhmFLqGm_Bvver2BKbDM1EIpmg&callback=initMap"></script>
-
+<div id="starter">
+    <br>
+    <p id="intro">Wanna play a game???</p>
+    <center><button type="button" id="btnStart">Click to Start!</button></center>
+</div>
     <div id="questions">
-        <br>
-        <center><button type="button" id="btnStart">Click to Start!</button></center>
+
 
 
         <p id="response"> </p>
@@ -93,12 +96,22 @@
         console.log(answerPara.innerHTML + "  hi");
         var mybutton = document.getElementById("btnStart");
         mybutton.addEventListener('click', startGame);
+        var introPara = document.getElementById("intro");
 
         function startGame() {
             mybutton.style.visibility = 'hidden';
+            introPara.innerHTML = "Question #" + (questionNum + 1);
+            for (var x = 0; x < arrMarkers[questionNum].length; x++) {
+                console.log(arrMarkers[questionNum][x][2])
+            }
         }
 
         function checkAnswer() {
+            if (this.customInfo == arrQuestions[questionNum][1]) {
+
+            }
+
+
             for (var x = 0; x < arrQuestions.length; x++) {
                 if (this.title == arrQuestions[x][1]) {
 //                    alert(this.title + x);
