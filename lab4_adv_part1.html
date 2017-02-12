@@ -44,12 +44,12 @@
             ;
 
         var arrQuestions = [
-                ["Which of these markers indicates Woodbury?", "Woodbury"],
-                ["Which of these markers indicates Plymouth?", "Plymouth"],
-                ["What color is the ocean?", "Roseville"]
+                ["Which of these markers indicates Louisville?", "Louisville"],
+                ["Which of these markers indicates Dallas?", "Dallas"],
+                ["Which of these markers indicates Miami?", "Miami"]
         ];
         var questionNum = 0;
-
+        var player_score = 0;
 
         function initMap() {
             var minneapolis = {lat: 44.97, lng:-93.26};
@@ -69,25 +69,7 @@
 //                console.log(arrMarkers[i][2]);
 
                 marker.addListener('click', checkAnswer);
-
-//                    for (var x = 0; x < arrQuestions.length; x++) {
-//                        if (marker.title == arrQuestions[x][1]) {
-//                            alert(marker.title);
-//                        }
-//                    }
-//                    alert(marker.position);
-
-
-
-//                    var text = "nice!!";
-//                    answerPara.innerHTML = text;
-//                    setTimeout(answerPara.innerHTML = "", 3000);
-//                });
-//                answerPara.innerHTML = "nice!";
             }
-
-
-//        http://stackoverflow.com/questions/6611634/google-maps-api-v3-add-event-listener-to-all-markers
         }
 
 
@@ -194,3 +176,6 @@
     </script>
 </body>
 </html>
+
+
+       <!--http://stackoverflow.com/questions/6611634/google-maps-api-v3-add-event-listener-to-all-markers-->
