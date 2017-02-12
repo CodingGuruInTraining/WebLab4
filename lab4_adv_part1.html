@@ -91,12 +91,14 @@
 
 
 
-        <p id="response"> </p>
+
     </div>
+    <p id="response"></p>
     <script>
         var questionPara = document.getElementById("questions");
         var answerPara = document.getElementById("response");
-        answerPara.innerHTML = "  hi";
+        var responseText;
+        answerPara.innerHTML = "hi";
         var mybutton = document.getElementById("btnStart");
         mybutton.addEventListener('click', startGame);
         var introPara = document.getElementById("intro");
@@ -174,7 +176,8 @@
             }
             else {
                 var text = "wrong";
-                answerPara.innerHTML = text;
+                responseText = "wrong";
+                answerPara.innerHTML = responseText;
 //                answerPara.innerHTML = answerPara.innerHTML + "Wrong!";
 //                answerPara.style.color = "red";
                 console.log("option 2");
