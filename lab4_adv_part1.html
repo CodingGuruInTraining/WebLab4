@@ -96,7 +96,7 @@
     <script>
         var questionPara = document.getElementById("questions");
         var answerPara = document.getElementById("response");
-        console.log(answerPara.innerHTML + "  hi");
+        answerPara.innerHTML = "  hi";
         var mybutton = document.getElementById("btnStart");
         mybutton.addEventListener('click', startGame);
         var introPara = document.getElementById("intro");
@@ -106,7 +106,7 @@
             mybutton.style.visibility = 'hidden';
             introPara.innerHTML = "Question #" + (questionNum + 1);
             questionPara.innerHTML = arrQuestions[questionNum][0];
-            answerPara.innerHTML = "";
+            answerPara.innerHTML = " ";
             doubleLooping(1);
         }
 //marker.setVisible(true);
@@ -129,9 +129,19 @@
                         console.log("wrong!");
                         showResponse(2);
                     }
+                    doubleLooping(2);
                     setTimeout(function() {
                         questionNum++;
-                        mybutton.style.visibility = 'visible';},3000);
+                        if(questionNum < arrQuestions.length) {
+                            mybutton.style.visibility = 'visible';
+                        }
+                        else {
+                            introPara.innerHTML = "";
+                            questionPara.innerHTML = "";
+                            var text = "Your score is " + player_score + "!";
+                            answerPara.innerText = text;
+                        }
+                    },3000);
 
 //            for (var x = 0; x < arrQuestions.length; x++) {
 //                if (this.title == arrQuestions[x][1]) {
@@ -150,33 +160,37 @@
 //            }
         }
 
-        function nextQuestion() {
-            questionNum++;
-            mybutton.style.visibility = 'visible';
-//            questionPara.innerHTML = "";
-        }
+//        function nextQuestion() {
+//            questionNum++;
+//            mybutton.style.visibility = 'visible';
+////            questionPara.innerHTML = "";
+//        }
 
         function showResponse(option) {
             if (option == 1) {
                 answerPara.innerHTML = "Correct!";
-                answerPara.style.color = "green";
+//                answerPara.style.color = "green";
+                console.log("option 1");
             }
             else {
-                answerPara.innerHTML = "Wrong!";
-                answerPara.style.color = "red";
+                var text = "wrong";
+                answerPara.innerHTML = text;
+//                answerPara.innerHTML = answerPara.innerHTML + "Wrong!";
+//                answerPara.style.color = "red";
+                console.log("option 2");
             }
         }
 
         function doubleLooping(option) {
             for (var y = 0; y < allMarkers.length; y++) {
                 for (var x = 0; x < arrMarkers[questionNum].length; x++) {
-                    if (option == 1) {
-                        if (allMarkers[y].customInfo == arrMarkers[questionNum][x][2]) {
+                    if (allMarkers[y].customInfo == arrMarkers[questionNum][x][2]) {
+                        if (option == 1) {
                             allMarkers[y].setVisible(true);
                         }
-                    }
-                    else if (option == 2) {
-
+                        else if (option == 2) {
+                            allMarkers[y].setVisible(false);
+                        }
                     }
                 }
             }
