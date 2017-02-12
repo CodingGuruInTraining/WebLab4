@@ -74,7 +74,7 @@
 //                console.log(arrMarkers[i][2]);
 
                     marker.addListener('click', checkAnswer);
-                    allMarkers.add(marker);
+                    allMarkers.push(marker);
                 }
             }
         }
@@ -106,8 +106,9 @@
             mybutton.style.visibility = 'hidden';
             introPara.innerHTML = "Question #" + (questionNum + 1);
             questionPara.innerHTML = arrQuestions[questionNum][0];
+            doubleLooping(1);
         }
-
+//marker.setVisible(true);
         function checkAnswer() {
             for (var y = 0; y < allMarkers.length; y++) {
                 for (var x = 0; x < arrMarkers[questionNum].length; x++) {
@@ -119,11 +120,6 @@
                 }
             }
             console.log("got past return!");
-
-//            if (this.customInfo == arrQuestions[questionNum][1]) {
-//
-//            }
-
 
 //            for (var x = 0; x < arrQuestions.length; x++) {
 //                if (this.title == arrQuestions[x][1]) {
@@ -141,10 +137,23 @@
 //                }
 //            }
         }
-        function selectQuestion(x) {
-            questionPara.innerHTML = arrQuestions[x][0];
+
+        function doubleLooping(option) {
+            for (var y = 0; y < allMarkers.length; y++) {
+                for (var x = 0; x < arrMarkers[questionNum].length; x++) {
+                    if (option == 1) {
+                        if (allMarkers[y].customInfo == arrMarkers[questionNum][x][2]) {
+                            allMarkers[y].setVisible(true);
+                        }
+                    }
+                    else if (option == 2) {
+
+                    }
+                }
+            }
         }
-        window.onload = selectQuestion(questionNum);
+
+//        window.onload = selectQuestion(questionNum);
 
     </script>
 </body>
@@ -153,3 +162,4 @@
 <!--Helping sites:-->
 <!--http://stackoverflow.com/questions/6611634/google-maps-api-v3-add-event-listener-to-all-markers-->
 <!--http://stackoverflow.com/questions/8685107/hiding-a-button-in-javascript-->
+<!--http://stackoverflow.com/questions/5030127/marker-visibility-in-google-maps-->
