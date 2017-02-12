@@ -58,7 +58,8 @@
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 4,
                 center: usa,
-                mapTypeId: 'satellite'
+                mapTypeId: 'satellite',
+                disableDefaultUI: true
             });
 
             for (var x = 0; x < arrMarkers.length; x++) {
@@ -209,3 +210,4 @@
 <!--http://stackoverflow.com/questions/6611634/google-maps-api-v3-add-event-listener-to-all-markers-->
 <!--http://stackoverflow.com/questions/8685107/hiding-a-button-in-javascript-->
 <!--http://stackoverflow.com/questions/5030127/marker-visibility-in-google-maps-->
+<!--http://stackoverflow.com/questions/4738595/how-do-i-delay-a-function-call-for-5-seconds-->
