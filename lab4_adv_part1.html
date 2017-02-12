@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!--<title>Title</title>-->
+    <title>Google Maps Game</title>
     <style>
         #map {
             height: 400px;
@@ -23,12 +23,6 @@
     <div id="map"></div>
     <script>
 
-//        var marker1;
-//        var marker2;
-//        var marker3;
-
-//        var answerPara = document.getElementById("response");
-//        console.log(answerPara.innerHTML);
         var arrMarkers = [[
                             [38.246735, -85.767436, "Louisville"],
                             [46.808521, -100.779420, "Bismarck"],
@@ -48,9 +42,7 @@
                         ]
                     ]
             ;
-//                            [45, -93.45, "Plymouth"],
-//                            [44.92, -92.96, "Woodbury"],
-//                            [45, -93.16, "Roseville"]
+
         var arrQuestions = [
                 ["Which of these markers indicates Woodbury?", "Woodbury"],
                 ["Which of these markers indicates Plymouth?", "Plymouth"],
@@ -58,28 +50,9 @@
         ];
         var questionNum = 0;
 
-//        function checkAnswer() {
-//
-//            console.log(this.title + " is title");
-//            console.log(arrQuestions[0][0]);
-//
-//            for (var x = 0; x < arrQuestions.length; x++) {
-//                if (this.title == arrQuestions[x][1]) {
-////                    alert(this.title + x);
-//                    setTimeout(answerPara.innerHTML = "Correct!", 3000);
-//                    questionNum++;
-//                    console.log(questionNum);
-//                    selectQuestion(questionNum);
-//                }
-//                else {
-//                    setTimeout(answerPara.innerHTML = "Wrong. Try again.", 3000);
-//                }
-//            }
-//        }
 
         function initMap() {
             var minneapolis = {lat: 44.97, lng:-93.26};
-//            {lat: -25.363, lng: 131.044};
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 10,
                 center: minneapolis,
@@ -114,71 +87,17 @@
             }
 
 
-
-
-
-//            marker1 = new google.maps.Marker({
-//                position: {lat: 45, lng: -93.45},
-//                map: map
-//            });
-//            marker2 = new google.maps.Marker({
-//                position: {lat: 44.92, lng: -92.96},
-//                map: map
-//            });
-//            marker3 = new google.maps.Marker({
-//                position: {lat: 45, lng: -93.16},
-//                map: map
-//            });
-
-
-
-
-//            console.log(marker1.position);
-//            marker1.addListener('click', function() {
-//               this.setTitle('good one');
-//               console.log(marker1.title)
-//            });
-//        }
-
-
-
-
 //        http://stackoverflow.com/questions/6611634/google-maps-api-v3-add-event-listener-to-all-markers
-
-
-
-//        var somethin = document.getElementsByName(marker1);
-//        console.log(somethin);
-//        marker1.addEventListener('click', answerCheck);
-//        function answerCheck() {
-////            console.log(document.activeElement);
-//            console.log("hi");
         }
 
 
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADpIV1QKhmFLqGm_Bvver2BKbDM1EIpmg&callback=initMap">
-
-//        marker1.addEventListener('click', function () {
-//            this.setTitle('good job clicking me');
-//            console.log("you clicked on " + this)
-//        });
-
-
-    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADpIV1QKhmFLqGm_Bvver2BKbDM1EIpmg&callback=initMap"></script>
 
     <div id="questions">
         <br>
         <center><button type="button" id="btnStart">Click to Start!</button></center>
-        <!--<form action="lab4_adv_part1.html">-->
-            <!--<p>Which of these markers indicates Woodbury?</p>-->
-            <!--<input type="radio" name="radioBtn" id="btn1" class="firstQ">-->
-            <!--<label for="btn1">Left</label>-->
-            <!--<input type="radio" name="radioBtn" id="btn2" class="firstQ">-->
-            <!--<label for="btn2">Middle</label>-->
-            <!--<input type="radio" name="radioBtn" id="btn3" class="firstQ">-->
-            <!--<label for="btn3">Right</label>-->
-        <!--</form>-->
+
 
         <p id="response"> </p>
     </div>
@@ -193,10 +112,6 @@
         }
 
         function checkAnswer() {
-
-//            console.log(this.title + " is title");
-//            console.log(arrQuestions[0][0]);
-
             for (var x = 0; x < arrQuestions.length; x++) {
                 if (this.title == arrQuestions[x][1]) {
 //                    alert(this.title + x);
