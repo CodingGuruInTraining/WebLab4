@@ -40,20 +40,18 @@
                             [42.335115, -83.051166, "Detroit"],
                             [39.740774, -104.977362, "Denver"]
                         ]
-                    ]
-            ;
+                    ];
 
         var arrQuestions = [
                 ["Which of these markers indicates Louisville?", "Louisville"],
                 ["Which of these markers indicates Dallas?", "Dallas"],
-                ["Which of these markers indicates Miami?", "Miami"]
-        ];
+                ["Which of these markers indicates Miami?", "Miami"] ];
+
         var questionNum = 0;
         var player_score = 0;
         var allMarkers = [];
 
         function initMap() {
-            var minneapolis = {lat: 44.97, lng: -93.26};
             var usa = {lat: 39.930312, lng: -98.390926};
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 4,
@@ -69,41 +67,32 @@
                         map: map,
                         visible: false,
                         customInfo: arrMarkers[x][i][2]
-//                    title: arrMarkers[i][2]
                     });
-//                console.log(i + " is iteration num");
-//                console.log(arrMarkers[i][2]);
-
                     marker.addListener('click', checkAnswer);
                     allMarkers.push(marker);
                 }
             }
         }
 
-
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADpIV1QKhmFLqGm_Bvver2BKbDM1EIpmg&callback=initMap"></script>
-<div id="starter">
-    <br>
-    <p id="intro">Wanna play a game???</p>
-    <center><button type="button" id="btnStart">Click to Start!</button></center>
-</div>
-    <div id="questions">
 
-
-
-
+    <div id="starter">
+        <br>
+        <p id="intro">Wanna play a game???</p>
+        <center><button type="button" id="btnStart">Click to Start!</button></center>
     </div>
+
+    <div id="questions"></div>
+
     <center><div id="response"></div></center>
+
     <script>
         var questionPara = document.getElementById("questions");
         var answerPara = document.getElementById("response");
-//        var responseText;
-//        answerPara.innerHTML = "hi";
         var mybutton = document.getElementById("btnStart");
         mybutton.addEventListener('click', startGame);
         var introPara = document.getElementById("intro");
-
 
         function startGame() {
             mybutton.style.visibility = 'hidden';
@@ -112,76 +101,38 @@
             answerPara.innerHTML = "";
             doubleLooping(1);
         }
-//marker.setVisible(true);
+
         function checkAnswer() {
-//            for (var y = 0; y < allMarkers.length; y++) {
-//                for (var x = 0; x < arrMarkers[questionNum].length; x++) {
-                    if (this.customInfo == arrMarkers[questionNum][0][2]) {
-                        showResponse(1);
-                        console.log("corrrect");
-                        player_score++;
-//                        console.log("this info: " + this.customInfo);
-//                        console.log("marker city: " + arrMarkers[questionNum][x][2]);
-// alert("Correct");
-//                        return;
-                    }
-                    else {
-//                    console.log(arrMarkers[questionNum][x][2])
-//                }
-//            }
-                        console.log("wrong!");
-                        showResponse(2);
-                    }
-                    doubleLooping(2);
-                    setTimeout(function() {
-                        questionNum++;
-                        if(questionNum < arrQuestions.length) {
-                            mybutton.style.visibility = 'visible';
-                        }
-                        else {
-                            introPara.innerHTML = "";
-                            questionPara.innerHTML = "";
-                            answerPara.style.color = "blue";
-                            answerPara.innerHTML = "Your score is " + player_score + "!";
-                        }
-                    },2000);
-
-//            for (var x = 0; x < arrQuestions.length; x++) {
-//                if (this.title == arrQuestions[x][1]) {
-////                    alert(this.title + x);
-//                    setTimeout(answerPara.innerHTML = "Correct!", 3000);
-//                    questionNum++;
-////                    console.log(questionNum);
-//                    selectQuestion(questionNum);
-//                }
-//                else {
-//                    setTimeout(answerPara.innerHTML = "Wrong. Try again.", 3000);
-//                    answerPara.innerHTML = "";
-//                    console.log("did i get here?");
-//                    return;
-//                }
-//            }
+            if (this.customInfo == arrMarkers[questionNum][0][2]) {
+                showResponse(1);
+                player_score++;
+            }
+            else {
+                showResponse(2);
+            }
+            doubleLooping(2);
+            setTimeout(function() {
+                questionNum++;
+                if(questionNum < arrQuestions.length) {
+                    mybutton.style.visibility = 'visible';
+                }
+                else {
+                    introPara.innerHTML = "";
+                    questionPara.innerHTML = "";
+                    answerPara.style.color = "blue";
+                    answerPara.innerHTML = "Your score is " + player_score + "!";
+                }
+            },2000);
         }
-
-//        function nextQuestion() {
-//            questionNum++;
-//            mybutton.style.visibility = 'visible';
-////            questionPara.innerHTML = "";
-//        }
 
         function showResponse(option) {
             if (option == 1) {
                 answerPara.innerHTML = "Correct!";
                 answerPara.style.color = "green";
-                console.log("option 1");
             }
             else {
-//                var text = "wrong";
-//                responseText = "wrong";
                 answerPara.innerHTML = "Wrong!";
-//                answerPara.innerHTML = answerPara.innerHTML + "Wrong!";
                 answerPara.style.color = "red";
-                console.log("option 2");
             }
         }
 
@@ -199,9 +150,6 @@
                 }
             }
         }
-
-//        window.onload = selectQuestion(questionNum);
-
     </script>
 </body>
 </html>
