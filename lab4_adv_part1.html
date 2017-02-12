@@ -50,6 +50,7 @@
         ];
         var questionNum = 0;
         var player_score = 0;
+        var allMarkers = [];
 
         function initMap() {
             var minneapolis = {lat: 44.97, lng: -93.26};
@@ -73,6 +74,7 @@
 //                console.log(arrMarkers[i][2]);
 
                     marker.addListener('click', checkAnswer);
+                    allMarkers.add(marker);
                 }
             }
         }
@@ -92,102 +94,55 @@
         <p id="response"> </p>
     </div>
     <script>
+        var questionPara = document.getElementById("questions");
         var answerPara = document.getElementById("response");
         console.log(answerPara.innerHTML + "  hi");
         var mybutton = document.getElementById("btnStart");
         mybutton.addEventListener('click', startGame);
         var introPara = document.getElementById("intro");
 
+
         function startGame() {
             mybutton.style.visibility = 'hidden';
             introPara.innerHTML = "Question #" + (questionNum + 1);
-            for (var x = 0; x < arrMarkers[questionNum].length; x++) {
-                console.log(arrMarkers[questionNum][x][2])
-            }
+            questionPara.innerHTML = arrQuestions[questionNum][0];
         }
 
         function checkAnswer() {
-            if (this.customInfo == arrQuestions[questionNum][1]) {
-
-            }
-
-
-            for (var x = 0; x < arrQuestions.length; x++) {
-                if (this.title == arrQuestions[x][1]) {
-//                    alert(this.title + x);
-                    setTimeout(answerPara.innerHTML = "Correct!", 3000);
-                    questionNum++;
-//                    console.log(questionNum);
-                    selectQuestion(questionNum);
-                }
-                else {
-                    setTimeout(answerPara.innerHTML = "Wrong. Try again.", 3000);
-                    answerPara.innerHTML = "";
-                    console.log("did i get here?");
-                    return;
+            for (var y = 0; y < allMarkers.length; y++) {
+                for (var x = 0; x < arrMarkers[questionNum].length; x++) {
+                    if (allMarkers[y].customInfo == arrMarkers[questionNum][x][2]) {
+                        alert("Correct");
+                        return;
+                    }
+//                    console.log(arrMarkers[questionNum][x][2])
                 }
             }
+            console.log("got past return!");
+
+//            if (this.customInfo == arrQuestions[questionNum][1]) {
+//
+//            }
+
+
+//            for (var x = 0; x < arrQuestions.length; x++) {
+//                if (this.title == arrQuestions[x][1]) {
+////                    alert(this.title + x);
+//                    setTimeout(answerPara.innerHTML = "Correct!", 3000);
+//                    questionNum++;
+////                    console.log(questionNum);
+//                    selectQuestion(questionNum);
+//                }
+//                else {
+//                    setTimeout(answerPara.innerHTML = "Wrong. Try again.", 3000);
+//                    answerPara.innerHTML = "";
+//                    console.log("did i get here?");
+//                    return;
+//                }
+//            }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//        var allRadios = document.getElementsByClassName("firstQ");
-////        document.getElementById("btn1").addEventListener("click", answerCheck);
-////        console.log("ok");
-//        for (var i = 0; i < allRadios.length; i++) {
-////            console.log(allRadios[i].id);
-//            allRadios[i].addEventListener('click', answerCheck);
-//        }
-//
-//        marker1.addEventListener('click', answerCheck);
-//
-//        function answerCheck() {
-//            actEle = document.activeElement;
-//            console.log(actEle);
-//            var btnOne = document.getElementById("btn1");
-//            var btnTwo = document.getElementById("btn2");
-//            var btnThree = document.getElementById("btn3");
-//            if (btnThree.checked) {
-//                alert("Correct!");
-//            }
-//            else if (btnTwo.checked || btnOne.checked) {
-//                alert("Wrong!");
-//            }
-//        }
-
-
-//function checkAnswer() {
-//console.log(answerPara.id);
-//    console.log(this.title + " is title");
-//    console.log(arrQuestions[0][0]);
-
-//    for (var x = 0; x < arrQuestions.length; x++) {
-//        if (this.title == arrQuestions[x][1]) {
-//            alert(this.title + x);
-//            setTimeout(answerPara.innerHTML = "hey", 3000);
-//        }
-//    }
-//}
-
-
         function selectQuestion(x) {
-            document.getElementById("response").innerHTML = arrQuestions[x][0];
+            questionPara.innerHTML = arrQuestions[x][0];
         }
         window.onload = selectQuestion(questionNum);
 
@@ -195,5 +150,6 @@
 </body>
 </html>
 
-
-       <!--http://stackoverflow.com/questions/6611634/google-maps-api-v3-add-event-listener-to-all-markers-->
+<!--Helping sites:-->
+<!--http://stackoverflow.com/questions/6611634/google-maps-api-v3-add-event-listener-to-all-markers-->
+<!--http://stackoverflow.com/questions/8685107/hiding-a-button-in-javascript-->
