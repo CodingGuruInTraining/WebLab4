@@ -110,16 +110,19 @@
         }
 //marker.setVisible(true);
         function checkAnswer() {
-            for (var y = 0; y < allMarkers.length; y++) {
-                for (var x = 0; x < arrMarkers[questionNum].length; x++) {
-                    if (allMarkers[y].customInfo == arrMarkers[questionNum][x][2]) {
-                        alert("Correct");
-                        return;
+//            for (var y = 0; y < allMarkers.length; y++) {
+//                for (var x = 0; x < arrMarkers[questionNum].length; x++) {
+                    if (this.customInfo == arrMarkers[questionNum][0][2]) {
+                        console.log("corrrect");
+//                        console.log("this info: " + this.customInfo);
+//                        console.log("marker city: " + arrMarkers[questionNum][x][2]);
+// alert("Correct");
+//                        return;
                     }
 //                    console.log(arrMarkers[questionNum][x][2])
-                }
-            }
-            console.log("got past return!");
+//                }
+//            }
+            console.log("wrong!");
 
 //            for (var x = 0; x < arrQuestions.length; x++) {
 //                if (this.title == arrQuestions[x][1]) {
@@ -136,6 +139,11 @@
 //                    return;
 //                }
 //            }
+        }
+
+        function nextQuestion() {
+            questionNum++;
+            mybutton.style.visibility = 'visible';
         }
 
         function doubleLooping(option) {
