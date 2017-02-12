@@ -106,6 +106,7 @@
             mybutton.style.visibility = 'hidden';
             introPara.innerHTML = "Question #" + (questionNum + 1);
             questionPara.innerHTML = arrQuestions[questionNum][0];
+            answerPara.innerHTML = "";
             doubleLooping(1);
         }
 //marker.setVisible(true);
@@ -113,16 +114,24 @@
 //            for (var y = 0; y < allMarkers.length; y++) {
 //                for (var x = 0; x < arrMarkers[questionNum].length; x++) {
                     if (this.customInfo == arrMarkers[questionNum][0][2]) {
+                        showResponse(1);
                         console.log("corrrect");
+                        player_score++;
 //                        console.log("this info: " + this.customInfo);
 //                        console.log("marker city: " + arrMarkers[questionNum][x][2]);
 // alert("Correct");
 //                        return;
                     }
+                    else {
 //                    console.log(arrMarkers[questionNum][x][2])
 //                }
 //            }
-            console.log("wrong!");
+                        console.log("wrong!");
+                        showResponse(2);
+                    }
+                    setTimeout(function() {
+                        questionNum++;
+                        mybutton.style.visibility = 'visible';},3000);
 
 //            for (var x = 0; x < arrQuestions.length; x++) {
 //                if (this.title == arrQuestions[x][1]) {
@@ -144,6 +153,18 @@
         function nextQuestion() {
             questionNum++;
             mybutton.style.visibility = 'visible';
+//            questionPara.innerHTML = "";
+        }
+
+        function showResponse(option) {
+            if (option == 1) {
+                answerPara.innerHTML = "Correct!";
+                answerPara.style.color = "green";
+            }
+            else {
+                answerPara.innerHTML = "Wrong!";
+                answerPara.style.color = "red";
+            }
         }
 
         function doubleLooping(option) {
