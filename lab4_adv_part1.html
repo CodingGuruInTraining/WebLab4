@@ -97,8 +97,8 @@
     <script>
         var questionPara = document.getElementById("questions");
         var answerPara = document.getElementById("response");
-        var responseText;
-        answerPara.innerHTML = "hi";
+//        var responseText;
+//        answerPara.innerHTML = "hi";
         var mybutton = document.getElementById("btnStart");
         mybutton.addEventListener('click', startGame);
         var introPara = document.getElementById("intro");
@@ -140,10 +140,10 @@
                         else {
                             introPara.innerHTML = "";
                             questionPara.innerHTML = "";
-                            var text = "Your score is " + player_score + "!";
-                            answerPara.innerText = text;
+                            answerPara.style.color = "blue";
+                            answerPara.innerHTML = "Your score is " + player_score + "!";
                         }
-                    },3000);
+                    },2000);
 
 //            for (var x = 0; x < arrQuestions.length; x++) {
 //                if (this.title == arrQuestions[x][1]) {
@@ -171,15 +171,15 @@
         function showResponse(option) {
             if (option == 1) {
                 answerPara.innerHTML = "Correct!";
-//                answerPara.style.color = "green";
+                answerPara.style.color = "green";
                 console.log("option 1");
             }
             else {
-                var text = "wrong";
-                responseText = "wrong";
-                answerPara.innerHTML = responseText;
+//                var text = "wrong";
+//                responseText = "wrong";
+                answerPara.innerHTML = "Wrong!";
 //                answerPara.innerHTML = answerPara.innerHTML + "Wrong!";
-//                answerPara.style.color = "red";
+                answerPara.style.color = "red";
                 console.log("option 2");
             }
         }
